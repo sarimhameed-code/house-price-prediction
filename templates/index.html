@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>House Price Prediction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: white;
+      color: black;
+    }
+
+    .form-container {
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+    }
+
+    h2 {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>House Price Predictor</h1>
+    <form action="/predict" method="POST">
+
+      <input type="number" name="area" placeholder="Area (sqft)" required>
+      <input type="number" name="bedrooms" placeholder="Bedrooms" required>
+      <input type="number" name="bathroom" placeholder="Bathrooms" required>
+      <input type="number" name="stories" placeholder="Stories" required>
+
+      <label>Main Road:</label>
+      <select name="mainroad">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+
+      <label>Guest Room:</label>
+      <select name="guestroom">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+
+      <label>Basement:</label>
+      <select name="basement">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+
+      <label>Hot Water Heating:</label>
+      <select name="hotwaterheating">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+
+      <label>Air Conditioning:</label>
+      <select name="airconditioning">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+
+      <input type="number" name="parking" placeholder="Parking Spots" required>
+
+      <label>Preferred Area:</label>
+      <select name="prefarea">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+
+      <label>Furnishing Status:</label>
+      <select name="furnishingstatus">
+        <option value="furnished">Furnished</option>
+        <option value="semi-furnished">Semi-Furnished</option>
+        <option value="unfurnished">Unfurnished</option>
+      </select>
+
+      <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+      <h2>Estimated House Price: ₹ {{ prediction }}</h2>
+    {% endif %}
+  </div>
+</body>
+</html>
